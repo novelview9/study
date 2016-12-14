@@ -13,4 +13,4 @@ let users = [
   }
 ];
 
-module.exports = users;
+exports = users;

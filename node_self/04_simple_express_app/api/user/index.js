@@ -7,4 +7,4 @@ router.get('', controller.index);
 router.get('/:id', controller.show);
 router.delete('/:id', controller.distroy);
 router.post('/', controller.create); 
-module.exports = router;
+exports = router;
