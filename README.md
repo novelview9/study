@@ -53,16 +53,15 @@ module.exports = myObject;
 * npm i mysql --save
 
 ```
+mysql> CREATE DATABASE node_api_codelab;
 mysql> SHOW DATABASES;
 mysql> USE [DATABASE_NAME];
 mysql> SHOW TABLES;
-
 ```
 
 ```javascript
 // node에서 sequelize를 통한 db 연동,
 var sequelize = new Sequelize('database', 'username', 'password')
-
 ```
 
 #2016/12/15
@@ -75,3 +74,21 @@ var sequelize = new Sequelize('database', 'username', 'password')
 * git flow feature start [name]
 * git flow feature finish [name] 
 * finish는 안써봤는데 효율적일까?
+
+###vim nerd-tree 루트 변경
+> [nerd-tree cheatsheet](https://www.cheatography.com/stepk/cheat-sheets/vim-nerdtree/)
+
+* on the root and press 'shift +c'
+
+###node & mysql 연동과 crud 구현
+> [NodeJS를 이용한 API 서버만들기 5](http://webframeworks.kr/tutorials/nodejs/api-server-by-nodejs-05/)  
+> [github 자습](https://github.com/novelview9/study/tree/master/node_self/05_express_db_app)
+
+
+### vimium 단축키 확인
+> [vimium git](https://github.com/philc/vimium/blob/9225b2a1b9baa96ca94c2fa23e4a293478223c7e/README.md)
+
+* yy : 주소 복사
+* H : 뒤로 가기
+* gu : 상위 디렉터리로 이동
+* J, K : 탭 전환
