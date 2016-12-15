@@ -5,6 +5,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/users", require("./api/user/index"));
+app.use("/users", require("./api/user"));
 
 module.exports = app;

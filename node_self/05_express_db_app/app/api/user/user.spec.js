@@ -1,8 +1,8 @@
 const should = require('should');
 const request = require('supertest');
-const app = require('../../app');
-const syncDatabase = require('../../bin/sync-database');
-const models = require('../../models.js'); 
+const app = require('../../../app');
+const syncDatabase = require('../../../bin/sync-database');
+const models = require('../../models'); 
 
 describe('PUT/users/:id', () => {
     before('sync database', (done) => {
