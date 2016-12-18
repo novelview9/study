@@ -92,3 +92,47 @@ var sequelize = new Sequelize('database', 'username', 'password')
 * H : 뒤로 가기
 * gu : 상위 디렉터리로 이동
 * J, K : 탭 전환
+
+#2016/12/17
+
+### nodemon
+
+> [nodemon](https://nodemon.io/)
+
+* 노드 서버띄울때 변동 사항이 있을 경우, 서버를 죽이지 않고 실시간으로 재실행 해주는 node 모듈
+* nodemon reload, automatically.
+
+### express logger 의 구현
+
+> 간단한 url 접속 정보 log 구현
+
+```javascript 
+app.use( (req, res, next) => {
+	console.log("Request on" + req.url);
+	next();
+});
+
+```
+> [morgan](https://www.npmjs.com/package/morgan)(더 많은 정보들을 기록하는 module) 설정
+
+`app.use(morgan('combined')`
+
+
+
+### express view engine
+
+```javasciprt
+// example : pug
+app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'views')
+``` 
+
+### mongoose 사용
+
+```javascript
+const mongoose = require('mongoose');
+const db = mongoose.connect('mongodb://localhost/test');
+db.once('open', ()=>{
+	console.log('database is connected');
+});
+```
