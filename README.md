@@ -171,12 +171,16 @@ http://raccoonyy.github.io/django-annotate-and-aggregate-like-as-excel/
 
 ### docker 101
 
+#### 도커 기본 설치 파일
 > [install docker with homebrew](https://penandpants.com/2014/03/09/docker-via-homebrew/)
 
 * brew install docker
 * brew install docker-machine
 * brew install caskroom/cask/brew-cask
 * brew cask install virtualbox
+
+#### 도커 설정 커맨드
+> [도커 공식 문서](https://docs.docker.com)
 
 ```
 docker-machine create --driver virtualbox [name]
@@ -218,7 +222,7 @@ You can change the default string above to make this LaunchAgent start any machi
 
 
 > [*TODO]plist 파일 만들기에 대해서 공부가 더 필요하다  
->[learn more](https://docs.docker.com/engine/getstarted/last_page/)
+
 
 **정리하자면,**
 
@@ -228,6 +232,9 @@ You can change the default string above to make this LaunchAgent start any machi
 4. 실행
 5. 내 저장소로 이미지 업로드
 6. 다른 곳에 해당 이미지 배포
+
+#### 도커/도커머신 커맨드 정리
+>[learn more](https://docs.docker.com/engine/getstarted/last_page/)   
 
 * docker-machine create --driver virtualbox [name] : 도커 머신 만들기
 [*QUESTION] 도커머신도 여러개가 필요할까?(웹서버용 db용? 리눅스 버전에따라?)
@@ -248,6 +255,7 @@ You can change the default string above to make this LaunchAgent start any machi
 
 ```
 # Dockerfile example
+
 FROM docker/whalesay:latest
 RUN apt-get -y update && apt-get install -y fortunes
 CMD /usr/games/fortune -a | cowsay
