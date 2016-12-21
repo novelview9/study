@@ -163,6 +163,7 @@ http://raccoonyy.github.io/django-annotate-and-aggregate-like-as-excel/
 
 * python3 -m venv some_venv
 * [gitignore.io](gitignore.io) ignore 파일 생성
+* [*QUESTION]selenium implicity wait explicity wait 차이 자세히 공부
 
 
 
