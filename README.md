@@ -73,7 +73,7 @@ var sequelize = new Sequelize('database', 'username', 'password')
 * git flow init
 * git flow feature start [name]
 * git flow feature finish [name] 
-* finish는 안써봤는데 효율적일까?
+* [*QUESTION]finish는 안써봤는데 효율적일까?
 
 ###vim nerd-tree 루트 변경
 > [nerd-tree cheatsheet](https://www.cheatography.com/stepk/cheat-sheets/vim-nerdtree/)
@@ -136,3 +136,119 @@ db.once('open', ()=>{
 	console.log('database is connected');
 });
 ```
+
+#2016/12/19
+
+### python 라이브러리 기록하기
+> pip freeze > requirements.txt
+
+### vim 창 사이즈 조정
+
+> [창사이즈 설정하기](http://noon.tistory.com/1353)
+
+* ctrl+w  = 창사이즈 균둥하게
+* ctrl+w  <> 창 가로 조정
+* * ctrl+w  +- 창 높이 조정
+
+### manage.py shell 에서 모델 필드명 얻기
+
+* snippet._meta.get_fields()
+
+http://raccoonyy.github.io/django-annotate-and-aggregate-like-as-excel/
+
+
+#2016/12/20
+
+### TDD study
+
+* python3 -m venv some_venv
+* [gitignore.io](gitignore.io) ignore 파일 생성
+
+
+
+#2016/12/22
+
+### docker 101
+
+> [install docker with homebrew](https://penandpants.com/2014/03/09/docker-via-homebrew/)
+
+* brew install docker
+* brew install docker-machine
+* brew install caskroom/cask/brew-cask
+* brew cask install virtualbox
+
+```
+docker-machine create --driver virtualbox [name]
+docker-machine ip [name]
+docker run -d -p 8000:80 [name2]
+curl $(docker-machine ip default):8000
+
+eval $(docker-machine env [name])
+eval $(docker-machine env)
+```
+
+
+Create a file called `com.docker.machine.default.plist` under ~/Library/LaunchAgents with the following content:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>EnvironmentVariables</key>
+        <dict>
+            <key>PATH</key>
+            <string>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin</string>
+        </dict>
+        <key>Label</key>
+        <string>com.docker.machine.default</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/usr/local/bin/docker-machine</string>
+            <string>start</string>
+            <string>default</string>
+        </array>
+        <key>RunAtLoad</key>
+        <true/>
+    </dict>
+</plist>
+```
+You can change the default string above to make this LaunchAgent start any machine(s) you desire.
+
+
+> [*TODO]plist 파일 만들기에 대해서 공부가 더 필요하다  
+>[learn more](https://docs.docker.com/engine/getstarted/last_page/)
+
+**정리하자면,**
+
+1. os에 도커머신 설치
+2. (plist 또는 eval $(docker-machine env)도커머신 기본 설정   
+3. Dockerfile 로 설정한 도커 기본 빌드하기, 또는 도커클라이언트로 이미지 선택(로컬-내 저장소-퍼블릭저장소)
+4. 실행
+5. 내 저장소로 이미지 업로드
+6. 다른 곳에 해당 이미지 배포
+
+* docker-machine create --driver virtualbox [name] : 도커 머신 만들기
+[*QUESTION] 도커머신도 여러개가 필요할까?(웹서버용 db용? 리눅스 버전에따라?)
+* docker-machine start/stop [name] : 도커 머신 실행
+* docker-machine ip : 도커머신 ip 확인
+* docker-machine active :running 도커 머신 확인
+* docker-machine ls : 도커 머신 리스트 확인
+* eval $(docker-machine env) 도커머신 connecting with 도커
+* docker run -d -p 8000:80 nginx : 도커 이미지 실행
+* docker run docker-whale : 도커 이미지 실행
+* docker rmi -f [tag or name] : 도커 이미지 삭제
+* docker push novelview9/docker-whale : 도커허브 푸시
+* docker login : 도커허브 로그인
+* docker images : 도커허브 이미지 확인
+* docker build -t docker-whale . : .경로의 Dockerfile 문서를 읽어 docker-whale 이미지 생성
+* docker tag ab662a623b9a novelview9/docker-whale:latest : 도커 아이디 ab662a623b9a를 novelview9/docker-whale latest 로 태깅  
+[*QUESTION]도커 태그나 이름이 겹치면 어떻게 되나?   
+
+```
+# Dockerfile example
+FROM docker/whalesay:latest
+RUN apt-get -y update && apt-get install -y fortunes
+CMD /usr/games/fortune -a | cowsay
+```
+
